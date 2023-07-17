@@ -6,7 +6,7 @@ const Home = () => {
 		<>
 			<div className='border-b'>
 				<Container>
-					<NavBar />
+					
 				</Container>
             </div>
             

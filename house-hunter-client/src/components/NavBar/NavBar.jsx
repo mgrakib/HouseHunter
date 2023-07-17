@@ -5,10 +5,13 @@ import { HiHome } from "react-icons/hi";
 import { RiDashboardLine } from "react-icons/ri";
 
 import avatar from '../../assets/imgs/avatar.png'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../provider/AuthProvider';
 
 
 const NavBar = () => {
+	const { user } = useContext(AuthContext);
+	console.log(user)
     const [activeLink, setActiveLink] = useState('home')
     const navItem = (
 		<>
@@ -38,25 +41,26 @@ const NavBar = () => {
 		<>
 			<li className={``}>
 				<div className='flex items-center gap-2 text-[16px]'>
-                    <BsMoon />
-                    <FaRegBell />
+					<BsMoon />
+					<FaRegBell />
 				</div>
 			</li>
-			<Link>
-				<li className={` text-gray-color`}>
-					Login/Sinup
-				</li>
-			</Link>
-			{/* <Link>
-				<div className='nav-items-link'>
-					<div className='w-[40px] h-[40px]'>
-						<img
-							src={avatar}
-							alt=''
-						/>
-					</div>
-				</div>
-			</Link> */}
+
+			{user?.fullName ? (
+				<Link
+					onClick={() => setActiveLink("login/singin")}
+					
+				>
+					<li className={` text-gray-color`}>{user?.fullName}</li>
+				</Link>
+			) : (
+				<Link
+					onClick={() => setActiveLink("login/singin")}
+					to={"/singup"}
+				>
+					<li className={` text-gray-color`}>Login/Sinup</li>
+				</Link>
+			)}
 		</>
 	);
     return (
