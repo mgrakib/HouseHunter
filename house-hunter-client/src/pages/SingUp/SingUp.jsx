@@ -240,7 +240,7 @@ const SingUp = () => {
 
 				<div className='text-center'>
 					Already have account?{" "}
-					<Link className='text-brand-color border-b'>Login</Link>
+					<Link to={'/login'} className='text-brand-color border-b'>Login</Link>
 				</div>
 			</Container>
 		</div>

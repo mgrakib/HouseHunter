@@ -47,16 +47,13 @@ const NavBar = () => {
 			</li>
 
 			{user?.fullName ? (
-				<Link
-					onClick={() => setActiveLink("login/singin")}
-					
-				>
+				<Link onClick={() => setActiveLink("login/singin")}>
 					<li className={` text-gray-color`}>{user?.fullName}</li>
 				</Link>
 			) : (
 				<Link
 					onClick={() => setActiveLink("login/singin")}
-					to={"/singup"}
+					to={"/login"}
 				>
 					<li className={` text-gray-color`}>Login/Sinup</li>
 				</Link>

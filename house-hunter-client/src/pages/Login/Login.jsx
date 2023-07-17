@@ -1,21 +1,41 @@
 /** @format */
 
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "../../components/Container/Container";
+import axios from "axios";
+import { useState } from "react";
 
 const Login = () => {
+    const [errorPass, setErrorPass] = useState(null);
+    const [errorUser, setErrorUser] = useState(null);
+    const navigation = useNavigate();
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
 	} = useForm();
 	const onSubmit = data => {
-		const { email } = data;
-		
+		const { email, password } = data;
+
+		console.log(data);
+		const vlaue = { email, password };
+		axios("http://localhost:5000/login-user", {
+			params: data
+        }).then(res => {
+            const status = res?.data?.message;
+            if (status === "password-didn't match") {
+                setErrorPass(status);
+            } else if (status === "user-not-found") {
+                setErrorUser(status);
+            } else {
+                localStorage.setItem('email', email)
+                navigation('/');
+            }
+        });
 	};
 	return (
-		<div className='bg-secondary-bg-color py-4'>
+		<div className='bg-secondary-bg-color py-4 min-h-[calc(100vh-70px)]'>
 			<Container>
 				<div>
 					<h4 className='text-[20px] font-semibold'>Login</h4>
@@ -30,8 +50,6 @@ const Login = () => {
 								</p>
 
 								<div className='py-5'>
-								
-
 									{/* email  */}
 									<div className='mt-4'>
 										<label
@@ -120,8 +138,13 @@ const Login = () => {
 				</div>
 
 				<div className='text-center'>
-					Already have account?{" "}
-					<Link className='text-brand-color border-b'>Login</Link>
+					Don't have an account?{" "}
+					<Link
+						to={"/singup"}
+						className='text-brand-color border-b'
+					>
+						Sing Up
+					</Link>
 				</div>
 			</Container>
 		</div>
