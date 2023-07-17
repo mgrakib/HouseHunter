@@ -12,8 +12,8 @@ export default {
 				],
 			},
 			colors: {
-				"primary-bg-color": "var(--primary-bg-color)",
-				"secondary-bg-color": "var(--secondary-bg-color)",
+				"primary-color": "var(--primary-color)",
+				"secondary-color": "var(--secondary-color)",
 				"gradiant-dark-first-color": "var(--gradiant-dark-first-color)",
 				"gradiant-dark-second-color":
 					"var(--gradiant-dark-second-color)",
@@ -24,7 +24,7 @@ export default {
 				"white-color": "var(--white-color)",
 				"brand-color": "var(--brand-color)",
 				"gray-color": "var(--gray-color)",
-				"light-gray-color": "var(--light-gray-color)",
+				"black-color": "var(--black-color)",
 			},
 		},
 	},

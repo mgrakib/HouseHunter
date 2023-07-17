@@ -5,8 +5,8 @@
    --primary-font: Poppins, sans-serif;
   --secondary-font: Courier-Prime, monospace;
 
-  --primary-bg-color : #F6F8FB;
-  --secondary-bg-color : #E9F0F9;
+  --primary-color : #F6F8FB;
+  --secondary-color : #E9F0F9;
   --gradiant-dark-first-color : rgba(37,37,50,.98);
   --gradiant-dark-second-color : rgba(35,35,45,.98);
   --gradiant-light-first-color : #2d2d3a;
@@ -15,6 +15,7 @@
   --brand-color : #206BC4;
   --gray-color : #8c8c8e;
 
+  --black-color : #222831
 
 }
 
