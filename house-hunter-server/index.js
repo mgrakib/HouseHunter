@@ -58,6 +58,20 @@ async function run() {
             
         })
 
+        app.get("/login-user", async (req, res) => {
+			const { email, password } = req.query;
+
+            const isExistIser = await userCollection.findOne({ email });
+            if (!isExistIser) {
+                return res.send({message: 'user-not-found'})
+            } else if (isExistIser?.password !== password) {
+                return res.send({ message: "password-didn't match" });
+            } 
+
+            res.send({message: 'verify'})
+
+			
+		});
 
 		// Send a ping to confirm a successful connection
 		await client.db("admin").command({ ping: 1 });
@@ -71,6 +85,9 @@ async function run() {
 }
 run().catch(console.dir);
 
+app.get('/', async (req, res) => {
+    res.send('this is home hunter server')
+})
 app.listen(port, () => {
 	console.log(`Example app listening on port ${port}`);
 });
